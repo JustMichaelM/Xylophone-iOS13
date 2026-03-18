@@ -22,6 +22,13 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         let title: String = sender.currentTitle!
         print(title)
+        
+        sender.alpha = 0.5
+        
+        UIView.animate(withDuration: 0.2) {
+            sender.alpha = 1.0
+        }
+        
         playSound(title)
         
     }
