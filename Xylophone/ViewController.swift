@@ -7,15 +7,31 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
-
+    
+    var audioPlayer: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Placki są lubiane!")
     }
 
 
+    @IBAction func keyPressed(_ sender: UIButton) {
+        let title: String = sender.currentTitle!
+        print(title)
+        playSound(title)
+        
+    }
+    
+    func playSound(_ name: String) {
+        let url = Bundle.main.url(forResource: name, withExtension: "wav")!
+        audioPlayer = try! AVAudioPlayer(contentsOf: url)
+        audioPlayer!.volume = 0.5
+        audioPlayer!.play()
+    }
     
 
 }
